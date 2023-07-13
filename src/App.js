@@ -1,59 +1,16 @@
-import React, {useEffect,useState} from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-
-import Index from './views/Index';
-import Login from './views/Login';
-import Dashboard from './views/Dashboard';
+import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [backenData, setBackendData] = useState([{}])
-  useEffect(() => {
-    fetch("/api").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-  },[])
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          
-          <Route path="/" element={<Index />} />
-          <Route path="/index" element={<Index />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<DashboardRoute />}/>
-        </Routes>
-      </Router>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>Choo Choo! This is an example of a create-react-app site running on Railway.</p>
+        <a className="App-link" href="https://react.dev/learn" target="_blank" rel="noreferrer noopener">Learn React</a>
+      </header>
     </div>
   );
-}
-function DashboardRoute() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    fetch('/dashboard')
-      .then(response => response.json())
-      .then(data => {
-        if(data.user) {
-          setIsAuthenticated(true);
-        }else{
-          setIsAuthenticated(false);
-        }        
-      })    
-      .catch(error => {
-        console.error('Error al obtener el usuario:', error);
-        setIsAuthenticated(false);
-        // Manejar el error, por ejemplo, redirigir a la página de inicio de sesión
-      });
-  }, []);
-  if(!isAuthenticated){
-    return <Navigate to="/" />;
-  }
-  return <Dashboard />
 }
 
 export default App;
