@@ -11,7 +11,7 @@ function Dashboard () {
        .then(data => setUser(data.user))
        .catch(error => {
          console.error('Error al obtener el usuario:', error);
-         navigate('/login');
+        //  navigate('/login');
          // Manejar el error, por ejemplo, redirigir a la página de inicio de sesión
        });
    }, []);
