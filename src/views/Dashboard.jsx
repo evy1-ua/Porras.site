@@ -9,7 +9,7 @@ function Dashboard () {
      fetch('/dashboard')
        .then(response => response.json())
        .then(data => setUser(data.user))
-       .catch(error => {a
+       .catch(error => {
          console.error('ha habido un error:', error);
         //  navigate('/login');
          // Manejar el error, por ejemplo, redirigir a la página de inicio de sesión
