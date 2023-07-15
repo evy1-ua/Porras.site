@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Dashboard () {
-  const [user, setUser] = useState(null);
+function Dashboard() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,35 +24,32 @@ function Dashboard () {
         console.error('Error al obtener el usuario:', error);
         setIsAuthenticated(false);
         // Manejar el error, por ejemplo, redirigir a la página de inicio de sesión
+        navigate('/login');
       });
-  }, []);
-  
+  }, [navigate]);
+
   const handleLogout = () => {
     fetch('/logout')
-    .then(() => {
-      setUser(null);
-      navigate('/login');
-    })
-    .catch(error => {
-      console.log('Error al cerrar sesión', error);
-    })
+      .then(() => {
+        setIsAuthenticated(false);
+        navigate('/login');
+      })
+      .catch(error => {
+        console.log('Error al cerrar sesión', error);
+      });
   };
+
   return (
     <div>
-     
-        
-        
-        {user && (
+      {isAuthenticated ? (
         <div>
           <h1>Esto es el Dashboard</h1>
           <h2>Bienvenido, {user.name}</h2>
           <button onClick={handleLogout}>Salir</button>
         </div>
+      ) : (
+        <h1>No estás autenticado. Redirigiendo...</h1>
       )}
-             
-     
-      
-      
     </div>
   );
 }
