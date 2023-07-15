@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,6 +17,7 @@ function Dashboard() {
       .then(data => {
         if (data.user) {
           setIsAuthenticated(true);
+          setUser(data.user);
         } else {
           setIsAuthenticated(false);
         }
@@ -32,6 +34,7 @@ function Dashboard() {
     fetch('/logout')
       .then(() => {
         setIsAuthenticated(false);
+        setUser(null);
         navigate('/login');
       })
       .catch(error => {
@@ -44,7 +47,7 @@ function Dashboard() {
       {isAuthenticated ? (
         <div>
           <h1>Esto es el Dashboard</h1>
-          <h2>Bienvenido, {user.name}</h2>
+          <h2>Bienvenido, {user && user.name}</h2>
           <button onClick={handleLogout}>Salir</button>
         </div>
       ) : (
