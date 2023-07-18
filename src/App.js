@@ -32,14 +32,15 @@ function App() {
   );
 }
 function DashboardRoute() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-  // const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
   useEffect(() => {
     fetch('/dashboard')
       .then(response => response.json())
       .then(data => {
         if(data.user) {
           setIsAuthenticated(true);
+          setUser(data.user);
         }else{
           setIsAuthenticated(false);
         }        
@@ -50,10 +51,11 @@ function DashboardRoute() {
         // Manejar el error, por ejemplo, redirigir a la página de inicio de sesión
       });
   }, []);
+
   if(!isAuthenticated){
     return <Navigate to="/" />;
   }
-  return <Dashboard />
+  return <Dashboard user={user} />
 }
 
 export default App;
