@@ -31,31 +31,31 @@ function App() {
     </div>
   );
 }
-function DashboardRoute() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    fetch('/dashboard')
-      .then(response => response.json())
-      .then(data => {
-        if(data.user) {
-          setIsAuthenticated(true);
-          setUser(data.user);
-        }else{
-          setIsAuthenticated(false);
-        }        
-      })    
-      .catch(error => {
-        console.error('Error al obtener el usuario:', error);
-        setIsAuthenticated(false);
-        // Manejar el error, por ejemplo, redirigir a la página de inicio de sesión
-      });
-  }, []);
+// function DashboardRoute() {
+//   const [isAuthenticated, setIsAuthenticated] = useState(false);
+//   const [user, setUser] = useState(null);
+//   useEffect(() => {
+//     fetch('/dashboard')
+//       .then(response => response.json())
+//       .then(data => {
+//         if(data.user) {
+//           setIsAuthenticated(true);
+//           setUser(data.user);
+//         }else{
+//           setIsAuthenticated(false);
+//         }        
+//       })    
+//       .catch(error => {
+//         console.error('Error al obtener el usuario:', error);
+//         setIsAuthenticated(false);
+//         // Manejar el error, por ejemplo, redirigir a la página de inicio de sesión
+//       });
+//   }, []);
 
-  if(!isAuthenticated){
-    return <Navigate to="/" />;
-  }
-  return <Dashboard user={user} />
-}
+//   if(!isAuthenticated){
+//     return <Navigate to="/" />;
+//   }
+//   return <Dashboard user={user} />
+// }
 
 export default App;
