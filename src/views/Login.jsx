@@ -18,8 +18,15 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post('/login', {email, password});
-        console.log(response.data);
+        const response = await fetch('/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({email, password})
+        });
+        const data = await response.json();
+        console.log(data);
         navigate('/dashboard');
     }catch (error) {
       // Aquí puedes manejar el error en caso de que ocurra
