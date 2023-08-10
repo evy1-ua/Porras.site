@@ -1,5 +1,5 @@
-import React, {useEffect,useState} from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route,  } from 'react-router-dom';
 
 import Index from './views/Index';
 import Login from './views/Login';
@@ -10,16 +10,6 @@ import './App.css';
 
 function App() {
  
-   const [backenData, setBackendData] = useState([{}])
-   useEffect(() => {
-     fetch("/api").then(
-       response => response.json()
-     ).then(
-       data => {
-         setBackendData(data)
-       }
-     )
-   },[])
   return (
     <div className="App">
       <Router>
