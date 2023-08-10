@@ -18,6 +18,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(email,password);
         const response =await axios.post('https://porras-api-production.up.railway.app/login', {email, password});
         console.log(response);
         // navigate('/dashboard');
