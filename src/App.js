@@ -10,16 +10,16 @@ import './App.css';
 
 function App() {
  
-  // const [backenData, setBackendData] = useState([{}])
-  // useEffect(() => {
-  //   fetch("/api").then(
-  //     response => response.json()
-  //   ).then(
-  //     data => {
-  //       setBackendData(data)
-  //     }
-  //   )
-  // },[])
+   const [backenData, setBackendData] = useState([{}])
+   useEffect(() => {
+     fetch("/api").then(
+       response => response.json()
+     ).then(
+       data => {
+         setBackendData(data)
+       }
+     )
+   },[])
   return (
     <div className="App">
       <Router>
