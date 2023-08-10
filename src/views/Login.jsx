@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -17,10 +18,10 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(email,password);
+      console.log(email,password)
         const response =await axios.post('https://porras-api-production.up.railway.app/login', {email, password});
         console.log(response);
-        // navigate('/dashboard');
+        navigate('/dashboard');
     }catch (error) {
       // Aquí puedes manejar el error en caso de que ocurra
       console.error(error);
