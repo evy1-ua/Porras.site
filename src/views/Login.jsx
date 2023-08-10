@@ -18,7 +18,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post('http://porras-api-production.up.railway.app/login', {email, password});
+        await axios.post('http://porras-api-production.up.railway.app/login', {email, password});
         navigate('/dashboard');
     }catch (error) {
       // Aquí puedes manejar el error en caso de que ocurra

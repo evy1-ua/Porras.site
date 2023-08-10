@@ -10,9 +10,9 @@ function Dashboard() {
   const navigate = useNavigate();
 
   const [activeDiv,setActiveDiv] = useState(null);
-  const handleLinkClick = (divName) => {
-    setActiveDiv(divName);
-  }
+  // const handleLinkClick = (divName) => {
+  //   setActiveDiv(divName);
+  // }
 
   useEffect(() => {
     axios.get('http://porras-api-production.up.railway.app/dashboard')
