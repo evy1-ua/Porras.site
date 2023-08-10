@@ -15,7 +15,7 @@ function Dashboard() {
   // }
 
   useEffect(() => {
-    axios.get('http://porras-api-production.up.railway.app/dashboard')
+    axios.get('https://porras-api-production.up.railway.app/dashboard')
     .then(response => {
       if (response.data.user) {
         setIsAuthenticated(true);
