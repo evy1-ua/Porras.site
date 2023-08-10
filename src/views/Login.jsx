@@ -20,7 +20,7 @@ function Login() {
     try {
         const response =await axios.post('https://porras-api-production.up.railway.app/login', {email, password});
         console.log(response);
-        navigate('/dashboard');
+        // navigate('/dashboard');
     }catch (error) {
       // Aquí puedes manejar el error en caso de que ocurra
       console.error(error);
