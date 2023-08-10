@@ -1,0 +1,35 @@
+.last_users{
+    margin-top: 20px;
+}
+.add_user{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 5px;
+    margin: 20px;
+    border: 2px dashed #84754E;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+
+}
+.add_user p {
+
+    text-decoration: none;
+    align-items: center;
+    color: #84754E;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+}
+.add_user .content-icon{
+    font-size: 36px;
+    color: #84754E;
+    margin-right: 10px;
+}

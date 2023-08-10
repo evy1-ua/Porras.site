@@ -1,37 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Content from './components/Content';
+import axios from 'axios';
 
 function Dashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  const [activeDiv,setActiveDiv] = useState(null);
+  const handleLinkClick = (divName) => {
+    setActiveDiv(divName);
+  }
+
   useEffect(() => {
-    fetch('/dashboard')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error al obtener el usuario');
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (data.user) {
-          setIsAuthenticated(true);
-          setUser(data.user);
-        } else {
-          setIsAuthenticated(false);
-        }
-      })
-      .catch(error => {
-        console.error('Error al obtener el usuario:', error);
+    axios.get('http://porras-api-production.up.railway.app/dashboard')
+    .then(response => {
+      if (response.data.user) {
+        setIsAuthenticated(true);
+        setUser(response.data.user);
+      } else {
         setIsAuthenticated(false);
-        // Manejar el error, por ejemplo, redirigir a la página de inicio de sesión
-        navigate('/login');
-      });
+      }
+    })
+    .catch(error => {
+      console.error('Error al obtener el usuario:', error);
+      setIsAuthenticated(false);
+      // Manejar el error, por ejemplo, redirigir a la página de inicio de sesión
+      navigate('/login');
+    });
   }, [navigate]);
 
   const handleLogout = () => {
-    fetch('/logout')
+    fetch('http://porras-api-production.up.railway.app/logout')
       .then(() => {
         setIsAuthenticated(false);
         setUser(null);
@@ -43,16 +45,11 @@ function Dashboard() {
   };
 
   return (
-    <div>
-      {isAuthenticated ? (
-        <div>
-          <h1>Esto es el Dashboard</h1>
-          <h2>Bienvenido, {user && user.name}</h2>
-          <button onClick={handleLogout}>Salir</button>
-        </div>
-      ) : (
-        <h1>No estás autenticado. Redirigiendo...</h1>
-      )}
+    <div style={{display: "flex",width:"100%",backgroundColor:"#84754E"}}>
+        <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} setActiveDiv={setActiveDiv} />
+        <div style={{ marginTop: '65px', paddingLeft: '250px' }}></div>
+        <Content activeDiv={activeDiv} isAuthenticated={isAuthenticated} user={user} />
+       
     </div>
   );
 }

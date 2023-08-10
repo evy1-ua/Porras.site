@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -18,15 +18,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await fetch('/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({email, password})
-        });
-        const data = await response.json();
-        console.log(data);
+        const response = await axios.post('http://porras-api-production.up.railway.app/login', {email, password});
         navigate('/dashboard');
     }catch (error) {
       // Aquí puedes manejar el error en caso de que ocurra

@@ -1,0 +1,4 @@
+.sidebar-container {
+    max-height: 800px; /* Ajusta la altura máxima según tu diseño */
+    overflow-y: auto; /* Agrega scroll vertical si el contenido excede la altura */
+  }

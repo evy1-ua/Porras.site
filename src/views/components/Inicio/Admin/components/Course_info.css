@@ -1,0 +1,82 @@
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    background-color: #fff;
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+    display: flex;
+  flex-direction: column;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .category {
+    background-color: #f0f0f0;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  
+  .stars {
+    display: flex;
+    color: #f0c14b;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .stars svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 4px;
+  }
+  
+  .course-image {
+    max-height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  /* New styles for the "Ver más" button */
+  .card-body a{
+    text-align: end;
+  }
+.see-more-button {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

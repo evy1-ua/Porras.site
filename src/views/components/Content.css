@@ -1,0 +1,20 @@
+.content{
+    width: 100%;
+    border-radius: 65px 0px 0px 65px;
+    -webkit-border-radius: 65px 0px 0px 65px;
+    -moz-border-radius: 65px 0px 0px 65px;
+    -ms-border-radius: 65px 0px 0px 65px;
+    -o-border-radius: 65px 0px 0px 65px;
+    background-color: #FFFFEA;
+}
+.opciones-derecha{
+    align-items: right;
+}
+.font-color{
+    color:#84754E;
+}
+.text-normal{
+    font-size: 20px;
+    font-weight: 500 ;
+    font-stretch: narrower;
+}
