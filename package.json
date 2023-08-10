@@ -1,7 +1,6 @@
 {
   "name": "create-react-app-starter",
   "version": "0.1.0",
-  "proxy": "http://porras-api-production.up.railway.app",
   "dependencies": {
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
@@ -18,7 +17,7 @@
   },
   "scripts": {
     "dev": "react-scripts start",
-    "start": "serve build -s -n -L -p 3000",
+    "start": "serve build -s -n -L -p",
     "build": "react-scripts build"
   },
   "eslintConfig": {
