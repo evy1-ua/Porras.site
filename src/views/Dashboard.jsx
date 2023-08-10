@@ -33,7 +33,7 @@ function Dashboard() {
   }, [navigate]);
 
   const handleLogout = () => {
-    fetch('http://porras-api-production.up.railway.app/logout')
+    fetch('https://porras-api-production.up.railway.app/logout')
       .then(() => {
         setIsAuthenticated(false);
         setUser(null);
